@@ -1,0 +1,8 @@
+id;nome_completo;genero;endereco;cpf;numero;pagamento
+1;tio da silva ;F; Rua são paulo 66;123456789-12;9999-99999;pix
+2;tio dos santos;M;Rua saldanha 402;123456789-12;9999-99999;pix
+3;tio da silva ;M;Rua independecia 124;123456789-12;9999-99999;em maos
+4;tio dos santos;F;Rua são pedro 699;123456789-12;9999-99999;pix
+5;tio da silva ;F;Rua petropolis 679;123456789-12;9999-99999;em maos
+6;tio dos santos;F;Rua são paulo 87;123456789-12;9999-99999;em maos
+7;tio da silva ;M;Rua saldanha 520;123456789-12;9999-99999;cartao

@@ -1,0 +1,8 @@
+id;lavagem_dia;valor ganho;lavagem_quantidade;valores
+1;01/jan;30;1;carro_$30
+2;02/jan;200;6;moto_$20
+3;03/jan;70;2;caminhonete_$40
+4;04/jan;150;4;
+5;05/jan;110;3;
+6;06/jan;60;2;
+7;07/jan;90;3;

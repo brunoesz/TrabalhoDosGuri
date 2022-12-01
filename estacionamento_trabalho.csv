@@ -1,0 +1,8 @@
+Id;Email;Numero;Codinome_Proprietario;Automovel;data_pagamento;Valor;Placa
+1;user1@user1.com;9999-99999;tio1;carro ;01/jan;100;abc123
+2;user2@user2.com;9999-99999;tio2;carro ;02/jan;100;abc123
+3;user3@user3.com;9999-99999;tio3;moto;03/jan;50;abc123
+4;user4@user4.com;9999-99999;tio4;carro ;04/jan;100;abc123
+5;user5@user5.com;9999-99999;tio5;moto;05/jan;50;abc123
+6;user6@user6.com;9999-99999;tio6;moto;06/jan;50;abc123
+7;user7@user7.com;9999-99999;tio7;carro ;07/jan;100;abc123

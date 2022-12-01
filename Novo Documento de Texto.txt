@@ -1,0 +1,229 @@
+create database trampo;
+use trampo;
+
+create table aluguel_carros (
+id int primary key,
+alugados varchar (15) not null,
+valor int (10) not null,
+dia_vencimento varchar (15) not null);
+
+create table vendas_carro (
+id int primary key,
+carros varchar (15) not null,
+valor int (10) not null,
+parcela date not null,
+comprador varchar (15) not null,
+dia varchar (10) not null);
+
+create table estacionamento_trabalho (
+id int primary key,
+email varchar (18) not null,
+numero int not null,
+codinome varchar (15) not null,
+automovel varchar (15) not null,
+data_pagamento date not null,
+valor int (5) not null,
+placa varchar (10) not null);
+
+create table carro_cliente_trabalho (
+id int primary key,
+modelo varchar (15) not null,
+cor char (10) not null,
+box int (15) not null,
+mes_pago varchar (15) not null,
+data_pagamento date not null);
+
+create table cliente_cadastro_trabalho (
+id int primary key,
+nome_completo varchar (15) not null,
+genero char (10) not null,
+endereco varchar (15) not null,
+cpf varchar (15) not null,
+numero varchar (10) not null,
+pagamento varchar (5) not null);
+
+
+create table lavagem_estacionamento (
+id int primary key,
+lavagem_dia varchar (15) not null,
+valor_ganho char (10) not null,
+lavagem_quantidade varchar (15) not null,
+valores varchar (15) not null);
+
+
+create table lucros_estacionamento (
+id int primary key,
+mes_estacionamento date not null,
+lucro_mes char (10) not null,
+dispesa_aluguel varchar (15) not null,
+dispesa_luz varchar (15) not null,
+dispesa_funcionario varchar (10) not null);
+
+
+create table other_lavagem_empresa (
+id int primary key,
+mes date not null,
+domingos_realizado varchar (15) not null,
+valor_mes int (10) not null,
+dispesa_funcionario varchar (15) not null,
+dispesa_produtos varchar (15) not null);
+
+
+create table my_cars_cadastro_estacionamento (
+id int primary key,
+my_cars varchar (15) not null,
+ano char (10) not null,
+cor varchar (15) not null,
+valor_fipe varchar (15) not null,
+valor_pago varchar (10) not null);
+
+select * from my_cars_cadastro_estacionamento;
+use trampo;
+
+
+-- 66666666666666666666666666666666666666666666666667
+
+select estacionamento_trabalho.data_pagamento, carro_cliente_trabalho.data_pagamento
+from estacionamento_trabalho
+inner join carro_cliente_trabalho on estacionamento_trabalho.data_pagamento = carro_cliente_trabalho.data_pagamento
+where carro_cliente_trabalho.data_pagamento = 1/1 ;
+
+
+SELECT * FROM estacionamento_trabalho;
+
+select estacionamento_trabalho.valor, vendas_carro.valor
+from estacionamento_trabalho
+inner join vendas_carro on estacionamento_trabalho.valor = vendas_carro.valor
+where vendas_carro.valor = 300;
+
+select cliente_cadastro_trabalho.numero, estacionamento_trabalho.numero
+from cliente_cadastro_trabalho
+left outer join estacionamento_trabalho on cliente_cadastro_trabalho.numero = estacionamento_trabalho.numero
+where estacionamento_trabalho.numero = 99999-999999 ;
+
+
+-- 77777777777777777777777777777777777777
+
+select * from my_cars_cadastro_estacionamento
+order by ano;
+
+select * from aluguel_carros
+order by valor;
+
+select * from lucros_estacionamentos
+order by lucro_mes;
+
+select * from other_lavagem_empresa
+order by valor_mes;
+
+select * from vendas_carro
+order by dia;
+
+-- 888888888888888888888888888888888888888888
+
+select alugados, valor
+from aluguel_carros
+group by valor;
+
+select mes_pago, data_pagamento
+from carro_cliente_trabalho
+group by data_pagamento;
+
+select pagamento, nome_completo
+from cliente_cadastro_trabalho
+group by nome_completo;
+
+select dispesa_funcionario, dispesa_aluguel
+from lucros_estacionamento
+group by dispesa_aluguel;
+
+select dispesa_produtos, dispesa_funcionario
+from other_lavagem_empresa
+group by dispesa_funcionario;
+
+-- 9999999999999999999999999999999999999999999999999
+
+select estacionamento_trabalho.data_pagamento, carro_cliente_trabalho.data_pagamento
+from estacionamento_trabalho
+right outer join data_pagamento on estacionamento_trabalho.data_pagamento = carro_cliente_trabalho.data_pagamento
+where carro_cliente_trabalho.data_pagamento = "01/jan" 
+order by estacionamento_trabalho.data_pagamento;
+
+select estacionamento_trabalho.valor, vendas_carro.valor
+from estacionamento_trabalho
+full join valor on estacionamento_trabalho.valor = vendas_carro.valor
+where vendas_carro.valor = 100 
+order by estacionamento_trabalho.valor;
+
+select cliente_cadastro_trabalho.numero, estacionamento_trabalho.numero
+from cliente_cadastro_trabalho.numero
+left outer join numero on cliente_cadastro_trabalho.numero = estacionamento_trabalho.numero
+where estacionamento_trabalho.numero = 99999-999999
+order by cliente_cadastro_trabalho.numero;
+
+ -- 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 
+ select max(valor) as max
+ from aluguel_carros;
+ 
+ select sum(valor) as sum
+ from aluguel_carros;
+ 
+ select min(valor) as min
+ from aluguel_carros;
+ 
+ select avg(valor) as average
+ from aluguel_carros;
+ 
+-- 11 11 11 11 11 11 11 11 11 11 11 11 11
+
+create view mes_pago
+as select * from carro_cliente_trabalho;
+
+create view nome_completo
+as select * from cliente_cadastro_trabalho;
+
+create view codinome
+as select * from estacionamento_trabalho;
+
+create view lucro_mes
+as select * from lucros_estacionamento;
+
+create view valor_mes
+as select * from other_lavagem_empresa;
+
+-- 12 12 12 12 12 12 12 12 12 12 12 12 12
+
+start transaction;
+insert into aluguel_carros values(1,"corsaa",2500,"quartaa");
+savepoint savepoint1;
+
+insert into vendas_carros values(1,"exportt",3000,"jul/60","veio/praia",2);
+savepoint savepoint2;
+
+insert into lavagem_estacionamento values("01/jan",30,1,"carro_$30");
+savepoint savepoint3;
+
+insert into lucros_estacionamento values(1,"01/jan",3000,-1300,-150,-900);
+savepoint savepoint4;
+
+insert into cliente_cadastro_trabalho values("tio da silva","rua sao paulo",123456789,99999-99999,"pix");
+savepoint savepoint5;
+
+-- 13 13 13 13 13 13 13 13 13 13 13 13 13 13 
+
+create user user1@localhost
+identified by '12345';
+
+create user user2@localhost
+identified by '21653';
+
+create user user3@localhost
+identified by '38476';
+
+grant all on estacionamento_trabaho.* to 'user1@localhost';
+
+grant insert on lavagem_estacionamento.* to 'user2@localhost';
+
+grant select on lucros_estacionamento.* to 'user3@localhost';
+
